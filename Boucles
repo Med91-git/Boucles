@@ -1,0 +1,45 @@
+static void Main(string[] args)
+{
+
+    const int tailleTableauBis = 32;
+    string[] moves = new string[tailleTableauBis]; 
+    int nombreElementDejaDansTableau = 0; 
+    string pasDeDanseUtilisateur = "";
+
+    while (nombreElementDejaDansTableau <= moves.Length || pasDeDanseUtilisateur != "done")
+    {
+
+        Console.WriteLine("Saisir un pas de danse : "); 
+        pasDeDanseUtilisateur = Console.ReadLine();
+
+        if (pasDeDanseUtilisateur == "done")
+        {
+            break;  
+        }
+        
+        else
+        {
+                                
+            Console.Write("Combien de fois souhaitez-vous répéter vos pas ? ");
+            int nombrePasDemandé = int.Parse(Console.ReadLine());
+
+            // Aide de Joshua en algorithmie sur ma problématique concernant l'ajout de la saisie utilisateur dans le tableau 
+            for (int nombrePasEnCoursDejaEcrit = 0; nombrePasEnCoursDejaEcrit < nombrePasDemandé; nombrePasEnCoursDejaEcrit++)
+            {
+                moves[nombreElementDejaDansTableau] = pasDeDanseUtilisateur;
+                nombreElementDejaDansTableau++; 
+                
+            }
+            foreach (string move in moves)
+            {
+                Console.WriteLine(move);
+
+            } 
+            int nombrePlacesRestantesTableau = moves.Length - nombreElementDejaDansTableau;
+            Console.WriteLine($"il vous reste {nombrePlacesRestantesTableau} places disponibles à saisir dans le tableau");     
+
+        }
+        
+    }
+
+}
